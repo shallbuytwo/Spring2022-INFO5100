@@ -2,13 +2,10 @@ package edu.northeastern.weiwang;
 
 public class Main {
     public static void main(String[] args) {
-        ThreadSafeQueue<String> q1 = new ThreadSafeQueue<String>();
-        q1.add("aaa");
-        q1.add("bbb");
-        q1.add("ccc");
-        System.out.println(q1.peek());
-        q1.remove();
-        System.out.println(q1.peek());
-        System.out.println(q1.isEmpty());
+        ThreadSafeQueue<String> q = new ThreadSafeQueue<String>();
+        Thread t1 = new Thread(new ThreadClass("Alice", q));
+        Thread t2 = new Thread(new ThreadClass("Bob", q));
+        t1.start();
+        t2.start();
     }
 }
